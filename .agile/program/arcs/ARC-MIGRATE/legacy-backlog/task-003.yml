@@ -1,0 +1,14 @@
+task_id: TASK-003
+task_title: "Document install, contract, invocation"
+linked_story_id: STORY-001
+status: Done
+
+expected_output: "README section describing deployment, token.json placement, request/response contract, and success/failure curl invocation examples for the inference endpoint."
+timebox: "3 hours"
+owner: "Implementer Agent"
+
+completion_criteria:
+  - "Deployment steps include how to build the Node.js bundle, add token.json, and deploy to OpenFaaS"
+  - "Sample curl commands demonstrate happy path and at least one failure path"
+  - "HTTP contract fields for success and error responses are documented"
+  - "Notes on manual token placement and troubleshooting missing token errors are included"

@@ -1,0 +1,14 @@
+task_id: TASK-001
+task_title: "Create OpenFaaS handler"
+linked_story_id: STORY-001
+status: Done
+
+expected_output: "Node.js handler (index.js) that responds to POST /function/agent-inference, validates the payload, and records request metadata for downstream logging."
+timebox: "6 hours"
+owner: "Implementer Agent"
+
+completion_criteria:
+  - "Handler file exists and exports the OpenFaaS function entry point"
+  - "Payload validation ensures required fields before invoking the agent"
+  - "Request metadata (timestamp and correlation ID) is logged"
+  - "npm scripts for local testing (e.g., npm run dev) are configured"

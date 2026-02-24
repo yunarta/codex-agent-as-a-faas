@@ -1,0 +1,7 @@
+
+> agent-inference@0.1.0 smoke:live
+> RUN_LIVE=1 node scripts/smoke-local.js
+
+{"timestamp":"2026-02-11T16:01:49.851Z","event":"inference_complete","request_id":"221205b8-074d-4b2b-bbc8-d8c386bc7a8b","session_id":"gir-demo","input_chars":28,"output_chars":90,"latency_ms":2988,"outcome":"ok","token_source":"/home/yunarta/Projects/galant/agent/token.json"}
+statusCode: 200
+body: {"status":"ok","output":"Not sure—“GIR” isn’t a standard Codex term. Can you share the context or where you saw it?","session_id":"gir-demo","request_id":"221205b8-074d-4b2b-bbc8-d8c386bc7a8b"}

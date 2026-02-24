@@ -1,0 +1,2 @@
+http demo server listening on 8082
+{"timestamp":"2026-02-11T15:57:36.299Z","event":"inference_failed","request_id":"9cf7ff5a-735f-4d60-a024-70c9532ae909","session_id":"missing-token","latency_ms":3,"outcome":"error","error_code":"TOKEN_MISSING","error_message":"token.json is required and must contain access_token"}

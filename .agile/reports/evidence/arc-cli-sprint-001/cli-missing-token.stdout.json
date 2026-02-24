@@ -1,0 +1,14 @@
+{
+  "status": "error",
+  "error_code": "TOKEN_MISSING",
+  "message": "token.json is required and must contain access_token",
+  "request_id": "626fb0c3-591c-4432-96d6-46de13e70bc7",
+  "runtime": {
+    "workspace_dir": "/tmp/arc-cli-local-workspace",
+    "runtime_dir": "/tmp/arc-cli-local-runtime",
+    "run_record": "/tmp/arc-cli-local-runtime/runs/2026-02-24T17-11-17-304Z-626fb0c3-591c-4432-96d6-46de13e70bc7.json",
+    "process_uid": 1000,
+    "process_gid": 1000,
+    "profile": null
+  }
+}

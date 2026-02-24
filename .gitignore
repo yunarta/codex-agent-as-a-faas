@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+
+# Python build/cache
+__pycache__/
+*.py[cod]
+
+# Sphinx / docs build outputs
+_build/
+docs/sphinx/.env
+
+# Node dependencies
+node_modules/
+agent-inference/node_modules/
+
+# Local secrets / tokens
+.act.secrets
+token.json
+
+# Local act / test temp files
+.tmp/
+
+# Docker temp auth dirs (script-created)
+/tmp/arc-cli-*-dockercfg/

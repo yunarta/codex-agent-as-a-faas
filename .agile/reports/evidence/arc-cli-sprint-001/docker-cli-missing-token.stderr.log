@@ -1,0 +1,1 @@
+{"timestamp":"2026-02-24T17:11:27.256Z","event":"inference_failed","request_id":"e3b94457-115e-402d-946c-f1575fff6837","session_id":"container-missing-token","latency_ms":0,"outcome":"error","error_code":"TOKEN_MISSING","error_message":"token.json is required and must contain access_token"}

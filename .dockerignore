@@ -1,0 +1,11 @@
+.git
+.gitignore
+node_modules
+**/node_modules
+_build
+__pycache__
+.mypy_cache
+.pytest_cache
+.DS_Store
+*.log
+

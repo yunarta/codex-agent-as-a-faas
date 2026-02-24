@@ -1,0 +1,42 @@
+
+> agent-inference@0.1.0 test
+> node --test
+
+TAP version 13
+# {"timestamp":"2026-02-24T17:11:16.021Z","event":"inference_complete","request_id":"req-1","session_id":"s1","input_chars":9,"output_chars":11,"latency_ms":20,"outcome":"ok","token_source":"/tmp/token.json"}
+# {"timestamp":"2026-02-24T17:11:16.028Z","event":"inference_failed","request_id":"req-2","session_id":"s2","latency_ms":1,"outcome":"error","error_code":"TOKEN_MISSING","error_message":"token missing"}
+# {"timestamp":"2026-02-24T17:11:16.029Z","event":"inference_failed","request_id":"req-3","session_id":"s3","latency_ms":1,"outcome":"error","error_code":"UPSTREAM_INFERENCE_FAILED","error_message":"provider exploded"}
+# {"timestamp":"2026-02-24T17:11:16.030Z","event":"inference_failed","request_id":"req-4","session_id":"unknown","latency_ms":0,"outcome":"error","error_code":"BAD_REQUEST","error_message":"Field 'input' is required and must be a non-empty string"}
+# Subtest: returns 200 for valid request
+ok 1 - returns 200 for valid request
+  ---
+  duration_ms: 78.355979
+  type: 'test'
+  ...
+# Subtest: returns 500 TOKEN_MISSING when token cannot be loaded
+ok 2 - returns 500 TOKEN_MISSING when token cannot be loaded
+  ---
+  duration_ms: 0.902788
+  type: 'test'
+  ...
+# Subtest: returns 502 on upstream inference failure
+ok 3 - returns 502 on upstream inference failure
+  ---
+  duration_ms: 1.403928
+  type: 'test'
+  ...
+# Subtest: returns 400 on invalid request
+ok 4 - returns 400 on invalid request
+  ---
+  duration_ms: 0.87832
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 802.047721

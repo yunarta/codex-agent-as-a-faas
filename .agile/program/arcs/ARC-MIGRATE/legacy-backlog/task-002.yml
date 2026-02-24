@@ -1,0 +1,14 @@
+task_id: TASK-002
+task_title: "Integrate pi agent and token loader"
+linked_story_id: STORY-001
+status: Done
+
+expected_output: "Function imports @mariozechner/pi, loads token.json before invocation, runs the pi stack with the incoming payload, and returns the agent response or error."
+timebox: "7 hours"
+owner: "Implementer Agent"
+
+completion_criteria:
+  - "token.json is read from the component root and rejected with a 500 response if missing"
+  - "@mariozechner/pi is initialized per its README and invoked with the request data"
+  - "Response payload is normalized (status/data) and sent back to the caller"
+  - "Agent errors are caught and returned with HTTP 502 plus logged stack information"

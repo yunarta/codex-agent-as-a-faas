@@ -1,0 +1,7 @@
+
+> agent-inference@0.1.0 smoke:live
+> RUN_LIVE=1 node scripts/smoke-local.js
+
+{"timestamp":"2026-02-11T15:57:39.540Z","event":"inference_complete","request_id":"cc580381-aef4-4949-8a47-4281c0d9b517","session_id":"sprint1-smoke","input_chars":43,"output_chars":49,"latency_ms":1348,"outcome":"ok","token_source":"/home/yunarta/Projects/galant/agent/token.json"}
+statusCode: 200
+body: {"status":"ok","output":"Please provide the sprint goal text to summarize.","session_id":"sprint1-smoke","request_id":"cc580381-aef4-4949-8a47-4281c0d9b517"}

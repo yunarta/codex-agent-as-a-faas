@@ -1,0 +1,5 @@
+prompt=What is GIR in golf
+session_id=arc-cli-live-golf-001
+token_file=/home/yunarta/Projects/galant/agent/token.json
+runtime_dir=/tmp/arc-cli-live-runtime.whONdv
+workspace_dir=/tmp/arc-cli-live-workspace.UTgzh9

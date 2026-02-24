@@ -1,0 +1,14 @@
+task_id: TASK-005
+task_title: "Prepare Sprint 1 demo pack"
+linked_story_id: STORY-001
+status: Done
+
+expected_output: "PO demo pack containing what shipped, what is testable now, step-by-step verification, evidence pointers, known gaps, and a 5-10 minute demo script for the OpenFaaS inference API."
+timebox: "3 hours"
+owner: "Product Owner"
+
+completion_criteria:
+  - "Demo pack includes success and failure-path walkthroughs tied to AC1-AC4"
+  - "Evidence pointers map to logs, command output, and implementation artifacts"
+  - "Known gaps and out-of-scope items are stated explicitly"
+  - "Demo fix policy is acknowledged in the script"

@@ -1,0 +1,26 @@
+epic_id: EPIC-001
+epic_title: "Launch OpenFaaS Codex inference endpoint"
+epic_intent: "Enable a Node.js OpenFaaS function that runs @mariozechner/pi with OpenAI Codex-backed inference so the team can demo and validate agent behavior through a stable HTTP API."
+problem_opportunity: "We need a serverless runtime that can execute agent inference without full platform overhead. Today there is no deployable OpenFaaS component that accepts inference requests, consumes manual token.json credentials, and proves happy-path plus failure-path behavior for sprint demo."
+success_signal: "A deployed OpenFaaS function can accept POST inference requests, execute pi/Codex inference, return structured JSON responses, and produce test evidence for success, missing-token, and upstream-agent-error scenarios."
+
+in_scope:
+  - "Create a Node.js OpenFaaS function scaffold that can be deployed locally or to a hosted OpenFaaS gateway."
+  - "Wire the @mariozechner/pi agent stack into the function so it can process inference requests with OpenAI Codex-backed inference using manual token.json."
+  - "Define a strict HTTP contract for inference input/output and error envelopes."
+  - "Produce a Sprint Demo Pack with verification evidence and runbook steps."
+  - "Run and record a minimum test set (happy, negative, edge) before demo."
+
+out_of_scope:
+  - "Automatic token acquisition or rotation—token.json will continue to be supplied manually for now."
+  - "Local agent memory/persistence tuning—this will be tracked in a future cycle."
+  - "Additional tooling beyond @mariozechner/pi (e.g., chaining other tools) until the MVP is stable."
+  - "Performance optimization for multi-tenant scaling (keep single-agent invocation)."
+
+constraints:
+  - "Must use Node.js and the official @mariozechner/pi package."
+  - "Token material must live in token.json bundled with the component before install."
+  - "Demo must include executable verification steps and evidence pointers."
+
+target_timeframe: "Cycle 1"
+primary_stakeholder: "Business Owner"

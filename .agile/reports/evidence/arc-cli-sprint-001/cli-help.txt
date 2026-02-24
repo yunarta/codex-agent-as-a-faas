@@ -1,0 +1,20 @@
+agent-inference CLI
+
+Runs the pi-based agent as a CLI process (no HTTP server).
+
+Usage:
+  node scripts/agent-cli.js --session-id <id> --input "your prompt"
+  echo "your prompt" | node scripts/agent-cli.js --session-id <id>
+
+Options:
+  --session-id <id>       Required session identifier.
+  --config-file <path>    Optional JSON config file with defaults/profiles.
+  --profile <name>        Optional profile name from --config-file.
+  --input <text>          Prompt text. If omitted, reads stdin.
+  --input-file <path>     Read prompt text from file.
+  --metadata-file <path>  Optional JSON file for request metadata.
+  --output-file <path>    Optional output file (relative paths are under workspace dir).
+  --workspace-dir <path>  Workspace mount path (default: AGENT_WORKSPACE_DIR or /workspace).
+  --runtime-dir <path>    Runtime mount path (default: AGENT_RUNTIME_DIR or /runtime).
+  --pretty                Pretty-print JSON response.
+  --help                  Show this help.

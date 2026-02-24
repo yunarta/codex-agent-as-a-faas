@@ -1,0 +1,14 @@
+task_id: TASK-004
+task_title: "Execute OpenFaaS inference test suite"
+linked_story_id: STORY-001
+status: Done
+
+expected_output: "Verification summary with pass/fail results for happy path, missing token, upstream failure, and logging traceability checks against the OpenFaaS endpoint."
+timebox: "4 hours"
+owner: "Verifier (FaaS/Test Expert)"
+
+completion_criteria:
+  - "Runs scripted tests against deployed or local OpenFaaS function for AC1-AC4"
+  - "Publishes pass/fail matrix with evidence pointers per acceptance criterion"
+  - "Creates fix requests for each failed criterion without modifying implementation"
+  - "Provides recommendation: approve for demo, demo with known gaps, or block demo"

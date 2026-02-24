@@ -1,0 +1,4 @@
+-W .github/workflows/arc-cli-smoke.yml
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+--container-architecture linux/amd64
+--secret-file .act.secrets

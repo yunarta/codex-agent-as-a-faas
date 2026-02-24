@@ -1,0 +1,14 @@
+{
+  "status": "error",
+  "error_code": "TOKEN_MISSING",
+  "message": "token.json is required and must contain access_token",
+  "request_id": "e3b94457-115e-402d-946c-f1575fff6837",
+  "runtime": {
+    "workspace_dir": "/workspace",
+    "runtime_dir": "/runtime",
+    "run_record": "/runtime/runs/2026-02-24T17-11-27-258Z-e3b94457-115e-402d-946c-f1575fff6837.json",
+    "process_uid": 1000,
+    "process_gid": 1000,
+    "profile": null
+  }
+}

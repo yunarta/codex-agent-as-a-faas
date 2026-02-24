@@ -1,0 +1,3 @@
+arc-cli gate smoke complete
+timestamp=2026-02-24T17:11:29Z
+evidence_dir=/home/yunarta/Projects/galant/agent/.agile/reports/evidence/arc-cli-sprint-001

@@ -1,0 +1,1 @@
+{"timestamp":"2026-02-24T17:11:17.948Z","event":"inference_failed","request_id":"f1eea63b-e478-4d89-a30b-102c38b823e2","session_id":"local-config-missing-token","latency_ms":1,"outcome":"error","error_code":"TOKEN_MISSING","error_message":"token.json is required and must contain access_token"}

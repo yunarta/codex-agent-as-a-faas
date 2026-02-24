@@ -1,0 +1,67 @@
+name: ARC CLI Smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "agent-inference/**"
+      - "scripts/testing/**"
+      - ".github/workflows/arc-cli-smoke.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "agent-inference/**"
+      - "scripts/testing/**"
+      - ".github/workflows/arc-cli-smoke.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    env:
+      AGENT_TOKEN_JSON: ${{ secrets.AGENT_TOKEN_JSON }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Baseline gate smoke (local + container)
+        run: bash scripts/testing/arc-cli-gate-smoke.sh
+
+      - name: Upload baseline evidence
+        if: ${{ env.ACT != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: arc-cli-sprint-001-evidence
+          path: .agile/reports/evidence/arc-cli-sprint-001/
+
+      - name: Write token file for live smoke (optional)
+        run: |
+          if [ -z "${AGENT_TOKEN_JSON:-}" ]; then
+            echo "No AGENT_TOKEN_JSON provided; skipping token file write."
+            exit 0
+          fi
+          printf '%s' "$AGENT_TOKEN_JSON" > "$RUNNER_TEMP/agent-token.json"
+
+      - name: Live inference smoke (optional, token required)
+        env:
+          TOKEN_FILE: ${{ runner.temp }}/agent-token.json
+          PROMPT_TEXT: What is GIR in golf
+          EVIDENCE_DIR: .agile/reports/evidence/arc-cli-sprint-002
+        run: |
+          if [ ! -s "$TOKEN_FILE" ]; then
+            echo "No token file present; skipping live inference smoke."
+            exit 0
+          fi
+          bash scripts/testing/arc-cli-live-inference.sh
+
+      - name: Upload live smoke evidence
+        if: ${{ env.ACT != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: arc-cli-sprint-002-live-evidence
+          path: .agile/reports/evidence/arc-cli-sprint-002/
+          if-no-files-found: ignore

@@ -1,0 +1,103 @@
+story_id: STORY-001
+story_title: "Deploy OpenFaaS pi inference API"
+linked_epic_id: EPIC-001
+status: Done
+
+narrative:
+  actor: "Platform operator"
+  action: "Trigger Codex-backed agent inference through an OpenFaaS HTTP endpoint powered by @mariozechner/pi"
+  benefit: "So we can validate an end-to-end serverless inference path before adding memory and tool integrations"
+  context: "Token is manually supplied as token.json at install time. Memory and custom tool wiring are intentionally deferred."
+
+acceptance_criteria:
+  - given: "token.json is present and valid in the function container"
+    when: "a POST request is sent to /function/agent-inference with JSON body {\"input\":\"...\",\"session_id\":\"...\"}"
+    then: "the function returns HTTP 200 with JSON {\"status\":\"ok\",\"output\":\"...\",\"session_id\":\"...\",\"request_id\":\"...\"} and logs request_id"
+  - given: "token.json is missing or unreadable"
+    when: "a POST request is sent to /function/agent-inference"
+    then: "the function responds with HTTP 500 and JSON {\"status\":\"error\",\"error_code\":\"TOKEN_MISSING\",\"message\":\"token.json is required\"}"
+  - given: "the pi stack throws an error while processing inputs"
+    when: "the function receives a syntactically valid request"
+    then: "the response is HTTP 502 with JSON {\"status\":\"error\",\"error_code\":\"UPSTREAM_INFERENCE_FAILED\",...} and stack traces are logged"
+  - given: "any inference is executed"
+    when: "the POST request completes"
+    then: "the function logs timestamp, request_id, session_id, latency_ms, and outcome for traceability"
+
+definition_of_done:
+  - "Node.js OpenFaaS template (handler + package.json) created and linted"
+  - "@mariozechner/pi dependency installed and imported in the function"
+  - "Function loads token.json from the component root before invoking the agent"
+  - "Request/response contract documented with success and error JSON schemas"
+  - "Manual invocation script or curl example validated locally for success and failure paths"
+  - "README updated with install steps, token placement, and example payload"
+  - "Automated sanity checks exist for happy path, missing token, and upstream failure"
+  - "Sprint demo script and evidence pointers are prepared for PO Stage 5 demo"
+
+priority: Critical
+story_points: 5
+
+dependencies:
+  blocks: []
+  blocked_by: []
+  related_to: []
+
+technical_details:
+  components: ["OpenFaaS function", "@mariozechner/pi agent", "OpenAI Codex inference provider"]
+  api_endpoints: ["POST /function/agent-inference"]
+  database_changes: []
+  security_notes:
+    - "Token is read from local token.json; keep file permissions restricted."
+    - "Do not log token values in request or error logs."
+  contract:
+    request:
+      content_type: "application/json"
+      required_fields: ["input", "session_id"]
+      optional_fields: ["metadata"]
+    response_success_fields: ["status", "output", "session_id", "request_id"]
+    response_error_fields: ["status", "error_code", "message", "request_id"]
+    timeout_ms: 45000
+
+assumptions:
+  - "token.json will be provided manually at install time and contains the OpenAI token"
+  - "OpenFaaS gateway will route POST requests to /function/agent-inference"
+  - "Codex model access is available in the provided token"
+
+open_questions: []
+
+risks:
+  - risk: "Missing or malformed token.json blocks inference"
+    severity: Medium
+    mitigation: "Fail fast with clear error message and document token placement"
+  - risk: "Agent invocation could hang if pi stack or upstream provider is misconfigured"
+    severity: Medium
+    mitigation: "Add timeout/abort logic and map timeout to explicit upstream failure errors"
+  - risk: "Demo fails without deterministic evidence package"
+    severity: Medium
+    mitigation: "Prepare scripted test execution and static evidence pointers before demo"
+
+verification_mapping:
+  - ac_ref: "AC1"
+    test_steps:
+      - "POST valid JSON with token.json present"
+      - "Assert HTTP 200 and required success fields"
+      - "Check logs for request_id"
+    evidence_type: "curl output + function logs"
+  - ac_ref: "AC2"
+    test_steps:
+      - "Temporarily remove or rename token.json"
+      - "POST same JSON input"
+      - "Assert HTTP 500 and TOKEN_MISSING code"
+    evidence_type: "curl output + error log snapshot"
+  - ac_ref: "AC3"
+    test_steps:
+      - "Force upstream failure with invalid provider config"
+      - "POST valid JSON input"
+      - "Assert HTTP 502 and UPSTREAM_INFERENCE_FAILED code"
+    evidence_type: "curl output + stack trace log"
+  - ac_ref: "AC4"
+    test_steps:
+      - "Run one successful and one failed request"
+      - "Confirm trace fields timestamp/request_id/session_id/latency/outcome exist"
+    evidence_type: "structured logs extract"
+
+business_context: "We need a serverless agent runtime to validate inference requests before building surrounding tooling, so we can iterate on prompts safely." 

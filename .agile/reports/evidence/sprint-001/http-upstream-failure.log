@@ -1,0 +1,2 @@
+http demo server listening on 8083
+{"timestamp":"2026-02-11T15:57:37.335Z","event":"inference_failed","request_id":"9656f17f-833b-4531-b98b-79956fe16cd9","session_id":"upstream-failure","latency_ms":5,"outcome":"error","error_code":"UPSTREAM_INFERENCE_FAILED","error_message":"Failed to extract accountId from token"}

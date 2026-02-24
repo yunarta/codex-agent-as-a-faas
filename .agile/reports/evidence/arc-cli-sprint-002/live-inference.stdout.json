@@ -1,0 +1,14 @@
+{
+  "status": "error",
+  "error_code": "UPSTREAM_INFERENCE_FAILED",
+  "message": "Provided authentication token is expired. Please try signing in again.",
+  "request_id": "f7dd9bf2-9373-4434-acf2-27793a67e403",
+  "runtime": {
+    "workspace_dir": "/workspace",
+    "runtime_dir": "/runtime",
+    "run_record": "/runtime/runs/2026-02-24T17-20-17-050Z-f7dd9bf2-9373-4434-acf2-27793a67e403.json",
+    "process_uid": 1000,
+    "process_gid": 1000,
+    "profile": "live-golf"
+  }
+}

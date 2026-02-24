@@ -1,0 +1,1 @@
+{"timestamp":"2026-02-24T17:20:17.048Z","event":"inference_failed","request_id":"f7dd9bf2-9373-4434-acf2-27793a67e403","session_id":"arc-cli-live-golf-001","latency_ms":7686,"outcome":"error","error_code":"UPSTREAM_INFERENCE_FAILED","error_message":"Provided authentication token is expired. Please try signing in again."}

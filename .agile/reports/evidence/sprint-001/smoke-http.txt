@@ -1,0 +1,10 @@
+
+> agent-inference@0.1.0 smoke:http
+> bash scripts/smoke-http.sh
+
+[happy]
+{"status":"ok","output":"I don’t have any sprint details. Please share the sprint 1 notes/tickets or a brief summary to condense.","session_id":"happy","request_id":"f8cc3d80-d46e-4800-af49-ed4e37d2a92c"}
+[missing-token]
+{"status":"error","error_code":"TOKEN_MISSING","message":"token.json is required and must contain access_token","request_id":"9cf7ff5a-735f-4d60-a024-70c9532ae909"}
+[upstream-failure]
+{"status":"error","error_code":"UPSTREAM_INFERENCE_FAILED","message":"Failed to extract accountId from token","request_id":"9656f17f-833b-4531-b98b-79956fe16cd9"}

@@ -1,0 +1,2 @@
+http demo server listening on 8081
+{"timestamp":"2026-02-11T15:57:35.263Z","event":"inference_complete","request_id":"f8cc3d80-d46e-4800-af49-ed4e37d2a92c","session_id":"happy","input_chars":21,"output_chars":104,"latency_ms":2192,"outcome":"ok","token_source":"/home/yunarta/Projects/galant/agent/agent-inference/../token.json"}

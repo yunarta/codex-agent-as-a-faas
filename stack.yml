@@ -1,0 +1,13 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  agent-inference:
+    lang: node20
+    handler: ./agent-inference
+    image: agent-inference:latest
+    environment:
+      PI_PROVIDER: openai-codex
+      PI_MODEL: gpt-5.2-codex
+      INFERENCE_TIMEOUT_MS: "45000"

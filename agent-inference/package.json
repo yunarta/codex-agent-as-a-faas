@@ -1,0 +1,23 @@
+{
+  "name": "agent-inference",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenFaaS Node.js function running @mariozechner/pi codex inference",
+  "main": "handler.js",
+  "scripts": {
+    "test": "node --test",
+    "smoke": "node scripts/smoke-local.js",
+    "smoke:live": "RUN_LIVE=1 node scripts/smoke-local.js",
+    "cli": "node scripts/agent-cli.js",
+    "serve": "node scripts/http-server.js",
+    "smoke:http": "bash scripts/smoke-http.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@mariozechner/pi-agent-core": "^0.52.9",
+    "@mariozechner/pi-ai": "^0.52.9"
+  }
+}

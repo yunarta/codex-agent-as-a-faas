@@ -1,0 +1,24 @@
+FROM node:20-bookworm-slim
+
+RUN groupadd --gid 10001 agent && \
+    useradd --uid 10001 --gid 10001 --create-home --shell /usr/sbin/nologin agent && \
+    mkdir -p /opt/agent/agent-inference /workspace /runtime && \
+    chown -R agent:agent /opt/agent /workspace /runtime
+
+WORKDIR /opt/agent/agent-inference
+
+COPY --chown=agent:agent agent-inference/package.json agent-inference/package-lock.json ./
+
+USER agent
+
+RUN npm ci --omit=dev && npm cache clean --force
+
+COPY --chown=agent:agent agent-inference/handler.js ./handler.js
+COPY --chown=agent:agent agent-inference/scripts ./scripts
+COPY --chown=agent:agent agent-inference/README.md ./README.md
+
+ENV AGENT_WORKSPACE_DIR=/workspace \
+    AGENT_RUNTIME_DIR=/runtime \
+    TOKEN_PATH=/runtime/token.json
+
+ENTRYPOINT ["node", "scripts/agent-cli.js"]

@@ -1,0 +1,7 @@
+
+> agent-inference@0.1.0 smoke:live
+> RUN_LIVE=1 node scripts/smoke-local.js
+
+{"timestamp":"2026-02-11T16:03:45.305Z","event":"inference_complete","request_id":"5bf9f179-7902-45cb-8b0c-2a1b24f15b1a","session_id":"gir-golf","input_chars":64,"output_chars":328,"latency_ms":3065,"outcome":"ok","token_source":"/home/yunarta/Projects/galant/agent/token.json"}
+statusCode: 200
+body: {"status":"ok","output":"**GIR** stands for **Greens in Regulation**.  \nIt means you’ve reached the green in **par − 2 strokes** or fewer (counting all strokes).  \n\n**Examples:**\n- Par 3: on the green in 1 shot  \n- Par 4: on the green in 2 shots  \n- Par 5: on the green in 3 shots  \n\n**Calculation:**  \nGIR% = (Greens in Regulation ÷ Total Holes) × 100.","session_id":"gir-golf","request_id":"5bf9f179-7902-45cb-8b0c-2a1b24f15b1a"}
